@@ -1,0 +1,13 @@
+Package: contaminateR
+Title: Explore Generalized Linear Model Sensitivity to Data Contamination
+Version: 0.0.0.9000
+Authors@R: person("contaminateR", "Contributors", role = c("aut", "cre"),
+    email = "maintainer@example.com")
+Description: Documented function stubs for a planned framework for simulating
+    data, contaminating numeric predictors, repeatedly fitting generalized linear
+    models, and assessing stability. Functions are not yet implemented.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Imports: stats
+Suggests: knitr, rmarkdown
+VignetteBuilder: knitr

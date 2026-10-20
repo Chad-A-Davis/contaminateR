@@ -1,0 +1,22 @@
+---
+title: "Getting started with contaminateR"
+author: "contaminateR contributors"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Getting started with contaminateR}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+TODO: Write an introductory vignette explaining the purpose of contaminateR and
+how to use the package once its functions are implemented. Describe preparing or
+simulating data, choosing contamination methods and levels, fitting a reference
+GLM, running repeated contaminated fits, interpreting stability metrics, and
+visualizing the results. Add a reproducible example and a real-data application
+when available, and explain limitations and how to choose application-specific
+stability thresholds.
+
+Follow the 13-stage plan in WORKFLOW.md. Distinguish known-truth metrics from
+real-data stability metrics, and distinguish independent simulation datasets from
+repeated perturbations of one dataset. Plan both a simulation study and a real-world
+case study, followed by quality control, package integration, and presentation.

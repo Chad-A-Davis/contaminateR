@@ -1,0 +1,7 @@
+export(simulate_glm_data)
+export(contaminate_data)
+export(run_sensitivity)
+export(stability_metrics)
+S3method(print,contaminateR_result)
+S3method(plot,contaminateR_result)
+export(known_truth_metrics)
