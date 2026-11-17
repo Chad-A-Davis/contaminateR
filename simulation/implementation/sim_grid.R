@@ -16,7 +16,7 @@ sim_grid <- expand.grid(
 )
 
 sim_grid$scenario <- seq_len(nrow(sim_grid))
-sim_grid <- sim_grid[, c("n", "p_m", "p_r", "theta_z", "beta_x")]
+sim_grid <- sim_grid[, c("scenario", "n", "p_m", "p_r", "theta_z", "beta_x")]
 
 nrow(sim_grid)
 head(sim_grid)
