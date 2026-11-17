@@ -62,13 +62,42 @@ fit_models <- function(dat, beta_0, c_marg = NULL) {
     slope_position = 1L, variance_position = 1L
   )
 
-  naive_theta <- tryCatch(coef(glm(Dstar ~ Z[, 1], family = binomial())),
-                          error = function(e) c(NA_real_, NA_real_))
+  naive_fit <- tryCatch(
+    glm(Dstar ~ Z[, 1], family = binomial()),
+    error = function(e) NULL
+  )
+  
+  naive_theta <- if (!is.null(naive_fit)) {
+    coef(naive_fit)
+  } else {
+    c(NA_real_, NA_real_)
+  }
+  
+  naive <- if (!is.null(naive_fit)) {
+    extract_result(
+      "naive",
+      list(
+        param = coef(naive_fit),
+        variance = diag(vcov(naive_fit))
+      ),
+      slope_position = 2L,
+      variance_position = 2L
+    )
+  } else {
+    data.frame(
+      method = "naive",
+      estimate = NA_real_,
+      se = NA_real_,
+      status = "error",
+      message = "Naive glm failed"
+    )
+  }
+  
   naive_beta <- tryCatch(coef(glm(Dstar ~ X[, 1], family = binomial())),
                          error = function(e) c(NA_real_, NA_real_))
   start <- c(naive_theta[1:2], beta_0, naive_beta[2])
   if (any(!is.finite(start))) start <- c(qlogis(mean(Dstar) + 1e-6), 0, beta_0, 0)
-
+  
   obs <- extract_result(
     "obsloglik",
     SAMBA::obsloglik(Dstar = Dstar, Z = Z, X = X,
@@ -76,6 +105,6 @@ fit_models <- function(dat, beta_0, c_marg = NULL) {
     slope_position = 2L, variance_position = 2L,
     variance_matrix = TRUE
   )
-
-  rbind(approx, nonlog, obs)
+  
+  rbind(naive, approx, nonlog, obs)
 }
