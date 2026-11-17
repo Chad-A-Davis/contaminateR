@@ -59,7 +59,7 @@ fit_models <- function(dat, beta_0, c_marg = NULL) {
   nonlog <- extract_result(
     "nonlogistic",
     SAMBA::nonlogistic(Dstar = Dstar, Z = Z, c_X = dat$c_X),
-    slope_position = 1L, variance_position = 1L
+    slope_position = 2L, variance_position = 2L
   )
 
   naive_fit <- tryCatch(
