@@ -5,8 +5,8 @@ source("simulation/generation/generate_data.R")
 source("simulation/analysis/fit_models.R")
 
 # Pilot first. Change to seq_len(nrow(sim_grid)) and n_reps for full run.
-scenario_ids <- 1L
-rep_ids <- 1:3
+scenario_ids <- seq_len(nrow(sim_grid))
+rep_ids <- seq_len(n_reps)
 
 output_dir <- "results/model_fits"
 dir.create(output_dir, recursive = TRUE, showWarnings = FALSE)
